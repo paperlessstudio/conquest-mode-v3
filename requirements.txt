@@ -1,0 +1,4 @@
+neo4j>=5.0,<6
+pytest>=8.0
+# Optional: 実 PDF VLM 解析 (Phase 5)
+# pip install pls-conquest[vlm]

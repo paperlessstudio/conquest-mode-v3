@@ -1,0 +1,64 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pls-conquest"
+version = "0.83.4"
+description = "Conquest Mode v3 — 2D 図面を 3D に。7 ペルソナ × 物理法則 × 確率分布で構築する建築 BIM 自動化エンジン"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { file = "LICENSE" }
+authors = [
+    { name = "Paper-less Studio Co., Ltd.", email = "katsume@paper-less-studio.com" }
+]
+keywords = [
+    "bim", "cad", "architecture", "vlm", "pdf-to-3d",
+    "conquest", "neo4j", "construction", "knowledge-graph",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+]
+dependencies = [
+    "neo4j>=5.0,<6",
+]
+
+[project.optional-dependencies]
+vlm = ["google-genai>=1.0.0", "PyMuPDF>=1.24.0"]
+test = ["pytest>=8.0"]
+dev = ["pytest>=8.0", "google-genai>=1.0.0", "PyMuPDF>=1.24.0"]
+
+[project.scripts]
+conquest-distribution-check = "scripts.conquest_distribution_check:main"
+conquest-visual-verify = "scripts.conquest_visual_verify:main"
+
+[project.urls]
+Homepage = "https://www.archisymphony.net/conquest/free/"
+Documentation = "https://github.com/paperlessstudio/CEO_AI_Secretary_Expansion#readme"
+Repository = "https://github.com/paperlessstudio/CEO_AI_Secretary_Expansion"
+Issues = "https://github.com/paperlessstudio/CEO_AI_Secretary_Expansion/issues"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+# Conquest Mode v3 のみを配布. 他の plugins (rag/estimation 等) は同梱しない.
+include = ["plugins.conquest", "plugins.conquest.*"]
+exclude = ["tests*", "docs*", "fixtures*", "plugins.rag*", "plugins.estimation*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+asyncio_mode = "auto"
