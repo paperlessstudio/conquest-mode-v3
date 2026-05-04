@@ -4,8 +4,9 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pls-conquest"
-version = "0.83.4"
-description = "Conquest Mode v3 — 2D 図面を 3D に。7 ペルソナ × 物理法則 × 確率分布で構築する建築 BIM 自動化エンジン"
+# PEP 440 pre-release suffix. アオキ benchmark 7 条件達成で正式 0.84.0 release.
+version = "0.83.4b1"
+description = "Conquest Mode v3 (β preview) — ArchiSymphony PHASE 04/05/06 横断 core engine. 7 ペルソナ × 物理法則 × 確率分布."
 readme = "README.md"
 requires-python = ">=3.9"
 license = { file = "LICENSE" }
